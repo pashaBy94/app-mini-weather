@@ -1,6 +1,6 @@
 /** @type {import("next").NextConfig} */
 
-import { resolve, dirname } from 'path';
+import { resolve } from 'path';
 import path from 'path';
 
 const __dirname = path.resolve();

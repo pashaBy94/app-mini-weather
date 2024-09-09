@@ -1,4 +1,5 @@
-import Image from 'next/image';
+import { parseData } from '@/shared/lib';
+import weather from './../../json/weather.json';
 
 export default function Home() {
     return (

@@ -13,11 +13,19 @@ export default function MainWeather() {
         undefined | Array<{ [key: string]: string | number }>
     >();
     useEffect(() => {
-        console.log(window.location.href);
-        console.log(window.location);
+        const params = window.location.search.split('=');
+        console.log(params);
+        const index = params.findIndex(el => el == '?city');
+        if (index !== -1) {
+        }
+
+        // console.log(window.location.href);
+        // console.log(window.location.search);
+        getWeather({ data: params[index + 1] });
 
         getWeather({ data: 'Mogilev' })
             .then(res => {
+                console.log(res);
                 if (res) setWeatherData(res);
             })
             .catch(console.log);

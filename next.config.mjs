@@ -38,7 +38,7 @@ export function webpack(config) {
         ...config.resolve.alias,
         '@': resolve(__dirname),
         '@/images': resolve(__dirname, 'src/shared/assets/images'),
-        '@/pages': resolve(__dirname, 'src/pages'),
+        '@/pagesTamplates': resolve(__dirname, 'src/pagesTamplates'),
         '@/widgets': resolve(__dirname, 'src/widgets'),
         '@/features': resolve(__dirname, 'src/features'),
         '@/entities': resolve(__dirname, 'src/entities'),

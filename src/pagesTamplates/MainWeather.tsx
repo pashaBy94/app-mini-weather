@@ -6,9 +6,8 @@ import { parseData, parseUTC } from '@/shared/lib';
 import Image from 'next/image';
 import { iconMarker } from '@/lib/images';
 import { DailyList, HourlyList } from '@/widgets';
-import { DailyItem } from '@/entities';
 
-export function MainWeather() {
+export default function MainWeather() {
     const [weatherData, setWeatherData] = useState<WeatherData>();
     const [hourlyData, setHourlyData] = useState<
         undefined | Array<{ [key: string]: string | number }>

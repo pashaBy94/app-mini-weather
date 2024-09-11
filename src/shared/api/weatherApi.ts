@@ -18,8 +18,6 @@ export async function getWeather({
                 `https://api.openweathermap.org/geo/1.0/direct?q=${data},%20BY&limit=5&appid=${process.env.NEXT_PUBLIC_KEY_API_WEATHER}`,
             );
             const resultCoord = (await parse.json()) as CoordCity;
-            console.log(resultCoord);
-
             const coord = {
                 latitude: resultCoord[0].lat,
                 longitude: resultCoord[0].lon,

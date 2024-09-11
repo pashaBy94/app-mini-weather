@@ -1,4 +1,7 @@
-export function parseData(mlsec: number) {
+export function parseData(
+    mlsec: number,
+    option: Array<'day' | 'month' | 'year' | 'week' | 'time' | 'timeOfDay'>,
+) {
     const date: Date = new Date(mlsec);
     const months = [
         'января',
@@ -41,9 +44,9 @@ export function parseData(mlsec: number) {
     } else {
         timeOfDay = 'вечера';
     }
-    const formattedTime = `${hours}:${minutes.toString().padStart(2, '0')} ${timeOfDay}`;
+    const formattedTime = `${hours}:${minutes.toString().padStart(2, '0')} ${option.includes('timeOfDay') ? timeOfDay : ''}`;
 
-    return `${dayNumber} ${month} ${year}, ${dayName} | ${formattedTime}`;
+    return `${option.includes('day') ? dayNumber : ''} ${option.includes('month') ? month : ''} ${option.includes('year') ? year : ''}${option.includes('week') ? ', ' + dayName : ''} ${option.includes('time') ? formattedTime : ''}`;
 }
 export function parseUTC(mlsec: number): number {
     return mlsec * 1000;

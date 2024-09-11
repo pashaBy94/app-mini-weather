@@ -98,3 +98,15 @@ export interface WeatherArgument {
     units?: string;
     exclude?: string;
 }
+
+export interface HourlyListComponent {
+    hourlyData:
+        | {
+              [key: string]: string | number;
+          }[]
+        | undefined;
+}
+export interface HourlyItemComponent {
+    hour: { [key: string]: string | number };
+    ind: number;
+}

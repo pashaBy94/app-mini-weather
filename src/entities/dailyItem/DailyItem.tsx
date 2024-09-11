@@ -1,6 +1,6 @@
 import { iconMarker } from '@/lib/images';
 import { parseData, parseUTC } from '@/shared/lib';
-import { DailyData, HourlyItemComponent } from '@/shared/model/types';
+import { DailyData } from '@/shared/model/types';
 import Image from 'next/image';
 
 export function DailyItem({ day, ind }: { day: DailyData; ind: number }) {

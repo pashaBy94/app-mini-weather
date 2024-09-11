@@ -13,23 +13,24 @@ export default function MainWeather() {
         undefined | Array<{ [key: string]: string | number }>
     >();
     useEffect(() => {
+        console.log(window.location.href);
+        console.log(window.location);
+
         getWeather({ data: 'Mogilev' })
             .then(res => {
                 if (res) setWeatherData(res);
-                console.log(res);
             })
             .catch(console.log);
     }, []);
     useEffect(() => {
         const result: undefined | Array<{ [key: string]: string | number }> =
             weatherData?.hourly?.map(hour => {
-                console.log(iconMarker[hour?.weather[0].icon]);
-
                 return {
                     time: parseData(parseUTC(hour.dt), ['time']),
                     temp: hour.temp,
                     clouds: iconMarker[hour?.weather[0]?.icon] || '',
                     speed: hour.wind_speed,
+                    deg: hour.wind_deg,
                 };
             });
         setHourlyData(result);

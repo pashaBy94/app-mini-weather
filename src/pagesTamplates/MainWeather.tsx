@@ -6,6 +6,8 @@ import { parseData, parseUTC } from '@/shared/lib';
 import Image from 'next/image';
 import { iconMarker } from '@/lib/images';
 import { DailyList, HourlyList } from '@/widgets';
+import { parseParams } from '@/shared/lib/utils';
+import { ParamsOfWeather } from '@/widgets/paramsOfWeather/ParamsOfWeather';
 
 export default function MainWeather() {
     const [weatherData, setWeatherData] = useState<WeatherData>();
@@ -14,17 +16,11 @@ export default function MainWeather() {
     >();
 
     useEffect(() => {
-        const data: Record<string, string> = {};
-        const params = window.location.search.split('?')[1].split('&');
-        params.forEach(par => {
-            const res: string[] = par.split('=');
-            data[res[0]] = res[1];
-        });
-        console.log(params);
+        const data: Record<string, string> = parseParams(window.location.search);
         getWeather(
-            data.city
-                ? { data: data.city }
-                : { coord: { latitude: +data.latitude, longitude: +data.longitude } },
+            data.latitude && data.longitude
+                ? { coord: { latitude: +data.latitude, longitude: +data.longitude } }
+                : { data: data.city },
         )
             .then(res => {
                 console.log(res);
@@ -68,6 +64,7 @@ export default function MainWeather() {
             <main className="px-2">
                 <HourlyList hourlyData={hourlyData} />
                 {weatherData?.daily && <DailyList dailyData={weatherData?.daily} />}
+                {weatherData?.current && <ParamsOfWeather currentWeather={weatherData?.current} />}
             </main>
             <footer className=""></footer>
         </div>

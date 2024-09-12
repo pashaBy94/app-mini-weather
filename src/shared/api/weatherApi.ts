@@ -23,7 +23,7 @@ export async function getWeather({
                 longitude: resultCoord[0].lon,
             };
             response = await fetch(
-                `https://api.openweathermap.org/data/3.0/onecall?lat=${coord.latitude}&lon=${coord.longitude}&units=metric&exclude=${exclude}&appid=${process.env.NEXT_PUBLIC_KEY_API_WEATHER}`,
+                `https://api.openweathermap.org/data/3.0/onecall?lat=${coord.latitude}&lon=${coord.longitude}&units=${units}&exclude=${exclude}&appid=${process.env.NEXT_PUBLIC_KEY_API_WEATHER}`,
             );
         }
         if (response) {

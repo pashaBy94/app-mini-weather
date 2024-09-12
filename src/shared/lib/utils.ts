@@ -51,3 +51,15 @@ export function parseData(
 export function parseUTC(mlsec: number): number {
     return mlsec * 1000;
 }
+
+export function parseParams(search: string) {
+    const data: Record<string, string> = { city: 'Minsk' };
+    if (search) {
+        const params = search.split('?')[1].split('&');
+        params.forEach(par => {
+            const res: string[] = par.split('=');
+            data[res[0]] = res[1];
+        });
+    }
+    return data;
+}

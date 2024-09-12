@@ -32,10 +32,6 @@ h6 {
         text-wrap: balance;
     }
 }
-header {
-}
-li {
-}
 
 .hidden__sroll::-webkit-scrollbar {
     display: none;

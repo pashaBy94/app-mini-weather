@@ -3,7 +3,7 @@ import { CoordCity, WeatherArgument, WeatherData } from '../model/types';
 export async function getWeather({
     data,
     coord,
-    units,
+    units = 'metric',
     exclude,
 }: WeatherArgument): Promise<WeatherData | void> {
     try {

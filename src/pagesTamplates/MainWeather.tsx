@@ -12,20 +12,23 @@ export default function MainWeather() {
     const [hourlyData, setHourlyData] = useState<
         undefined | Array<{ [key: string]: string | number }>
     >();
+
     useEffect(() => {
-        const params = window.location.search.split('=');
+        const data: Record<string, string> = {};
+        const params = window.location.search.split('?')[1].split('&');
+        params.forEach(par => {
+            const res: string[] = par.split('=');
+            data[res[0]] = res[1];
+        });
         console.log(params);
-        const index = params.findIndex(el => el == '?city');
-        if (index !== -1) {
-        }
-
-        // console.log(window.location.href);
-        // console.log(window.location.search);
-        getWeather({ data: params[index + 1] });
-
-        getWeather({ data: 'Mogilev' })
+        getWeather(
+            data.city
+                ? { data: data.city }
+                : { coord: { latitude: +data.latitude, longitude: +data.longitude } },
+        )
             .then(res => {
                 console.log(res);
+
                 if (res) setWeatherData(res);
             })
             .catch(console.log);

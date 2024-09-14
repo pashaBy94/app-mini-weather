@@ -12,7 +12,7 @@ export function SpeedWind({ deg, speed }: { deg: number; speed: number }) {
         });
     }, []);
     return (
-        <div className="bg-white rounded-xl p-2 flex flex-col gap-2">
+        <div className="bg-white rounded-xl p-2 flex flex-col gap-2 w-full ">
             <h3 className=" text-[.8rem]">Скорость ветра</h3>
             <div className=" flex gap-2">
                 <p className=" font-semibold">

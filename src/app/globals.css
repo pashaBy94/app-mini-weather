@@ -42,3 +42,21 @@ h6 {
     -ms-overflow-style: none; /* IE и Edge */
     scrollbar-width: none; /* Firefox */
 }
+
+/* div {
+    display: grid;
+    grid-template-columns: repeat(2, 5fr);
+    grid-template-rows: repeat(2, 3fr);
+    grid-template-areas:
+        'wind humidity'
+        'sun sun';
+}
+.item1 {
+    grid-area: wind;
+}
+.item2 {
+    grid-area: humidity;
+}
+.item2 {
+    grid-area: sun;
+} */

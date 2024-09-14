@@ -19,4 +19,6 @@ export const iconMarker: { [key: string]: string } = {
     '50d': '/images/50d.png',
     '50n': '/images/50n.png',
     direction: '/images/direction.png',
+    rain: '/images/rain.svg',
+    not_rain: '/images/not-rain.svg',
 };

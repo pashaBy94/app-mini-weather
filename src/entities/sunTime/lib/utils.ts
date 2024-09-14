@@ -1,5 +1,5 @@
 export function setSunny({ sunset, sunrise, dt, node }: { [key: string]: any }) {
-    function timePassedtoPercent({ sunset, sunrise, dt, node }: { [key: string]: any }): number {
+    function timePassedtoPercent({ sunset, sunrise, dt }: { [key: string]: any }): number {
         const delta = sunset - sunrise;
         const onePercent = delta / 100;
         const howLong = dt - sunrise;
@@ -8,11 +8,7 @@ export function setSunny({ sunset, sunrise, dt, node }: { [key: string]: any }) 
     }
     const perc = timePassedtoPercent({ sunset, sunrise, dt, node });
     const deltaBottom = perc <= 50 ? perc * 2 : (100 - perc) * 2;
-    if (perc < 25 || perc > 75) {
-        node.style.bottom = `${deltaBottom}%`;
-    } else {
-        node.style.top = `${100 - perc * 2}%`;
-    }
+    node.style.bottom = `${deltaBottom}%`;
     if (perc > 50) {
         node.style.right = `${100 - perc}%`;
     } else {

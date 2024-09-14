@@ -1,6 +1,6 @@
 export function parseData(
     mlsec: number,
-    option: Array<'day' | 'month' | 'year' | 'week' | 'time' | 'timeOfDay'>,
+    option: Array<'day' | 'month' | 'year' | 'week' | 'time' | 'timeOfDay' | 'minute'>,
 ) {
     const date: Date = new Date(mlsec);
     const months = [

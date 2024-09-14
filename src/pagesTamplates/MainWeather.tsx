@@ -5,7 +5,7 @@ import { WeatherData } from '@/shared/model/types';
 import { parseData, parseUTC } from '@/shared/lib';
 import Image from 'next/image';
 import { iconMarker } from '@/lib/images';
-import { DailyList, HourlyList } from '@/widgets';
+import { DailyList, HourlyList, MinutlyList } from '@/widgets';
 import { parseParams } from '@/shared/lib/utils';
 import { ParamsOfWeather } from '@/widgets/paramsOfWeather/ParamsOfWeather';
 
@@ -14,6 +14,7 @@ export default function MainWeather() {
     const [hourlyData, setHourlyData] = useState<
         undefined | Array<{ [key: string]: string | number }>
     >();
+    const [minutlyData, setMinutlyData] = useState<Array<{ dt: number; precipitation: number }>>();
 
     useEffect(() => {
         const data: Record<string, string> = parseParams(window.location.search);
@@ -41,6 +42,7 @@ export default function MainWeather() {
                 };
             });
         setHourlyData(result);
+        if (weatherData?.minutely) setMinutlyData(weatherData?.minutely);
     }, [weatherData]);
     return (
         <div className="flex flex-col gap-4 bg-indigo-100">
@@ -63,6 +65,7 @@ export default function MainWeather() {
             </header>
             <main className="px-2">
                 <HourlyList hourlyData={hourlyData} />
+                {minutlyData && <MinutlyList minutlyData={minutlyData} />}
                 {weatherData?.daily && <DailyList dailyData={weatherData?.daily} />}
                 {weatherData?.current && <ParamsOfWeather currentWeather={weatherData?.current} />}
             </main>

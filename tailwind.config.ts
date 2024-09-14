@@ -19,19 +19,6 @@ const config: Config = {
             gridTemplateRows: {
                 custom: '1fr',
             },
-            scrollbar: {
-                hidden: {
-                    // Firefox
-                    'scrollbar-width': 'none',
-                    // Safari and Chrome
-                    '&::-webkit-scrollbar': {
-                        width: '0px',
-                        height: '0px',
-                    },
-                    // IE and Edge
-                    '-ms-overflow-style': 'none',
-                },
-            },
         },
     },
     plugins: [],

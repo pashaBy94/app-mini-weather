@@ -43,20 +43,28 @@ h6 {
     scrollbar-width: none; /* Firefox */
 }
 
-/* div {
-    display: grid;
-    grid-template-columns: repeat(2, 5fr);
-    grid-template-rows: repeat(2, 3fr);
-    grid-template-areas:
-        'wind humidity'
-        'sun sun';
+.hidden__scroll::-webkit-scrollbar {
+    display: none;
 }
-.item1 {
-    grid-area: wind;
+.hidden__scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
-.item2 {
-    grid-area: humidity;
+
+.visible__scroll::-webkit-scrollbar {
+    scrollbar-color: rgb(224, 224, 224) white;
 }
-.item2 {
-    grid-area: sun;
-} */
+.visible__scroll::-webkit-scrollbar-thumb {
+    background: white;
+}
+.visible__scroll::-webkit-scrollbar-track {
+    background: rgb(224, 224, 224);
+}
+.visible__scroll {
+    scrollbar-color: rgb(224, 224, 224) white;
+    scrollbar-width: thin;
+}
+
+.after-pill::after {
+    @apply content-[''] h-8 w-full rounded-xl bg-white absolute bottom-[-10px] left-0;
+}

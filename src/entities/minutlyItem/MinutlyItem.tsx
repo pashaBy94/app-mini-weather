@@ -12,7 +12,7 @@ export function MinutlyItem({
 }) {
     const [isRain, setIsRain] = useState(false);
     useEffect(() => {
-        setIsRain(minute.precipitation > 20);
+        setIsRain(minute.precipitation > 10);
     }, []);
 
     return (

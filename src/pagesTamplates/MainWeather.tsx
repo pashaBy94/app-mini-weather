@@ -17,42 +17,42 @@ export default function MainWeather() {
     const [minutlyData, setMinutlyData] = useState<Array<{ dt: number; precipitation: number }>>();
 
     useEffect(() => {
-        let initial = window.pageYOffset;
-        function trottleScroll() {
-            let timer: any;
-            return () => {
-                if (timer) {
-                    return;
-                }
-                window.addEventListener('scroll', scrollingContent);
-                timer = setTimeout(() => {
-                    timer = null;
-                    clearTimeout(timer);
-                    window.removeEventListener('scroll', scrollingContent);
-                }, 700);
-            };
-        }
-        const trottle = trottleScroll();
-        function scrollingContent(ev: Event) {
-            ev.preventDefault();
-            ev.stopPropagation();
-            window.scrollTo(0, initial);
-        }
-        function wheelContent(ev: WheelEvent) {
-            initial = window.pageYOffset;
-            const parent: HTMLElement | null =
-                (ev.target as HTMLElement).closest('.hidden__sroll') ||
-                (ev.target as HTMLElement).closest('.visible__scroll');
+        // let initial = window.pageYOffset;
+        // function trottleScroll() {
+        //     let timer: any;
+        //     return () => {
+        //         if (timer) {
+        //             return;
+        //         }
+        //         window.addEventListener('scroll', scrollingContent);
+        //         timer = setTimeout(() => {
+        //             timer = null;
+        //             clearTimeout(timer);
+        //             window.removeEventListener('scroll', scrollingContent);
+        //         }, 700);
+        //     };
+        // }
+        // const trottle = trottleScroll();
+        // function scrollingContent(ev: Event) {
+        //     ev.preventDefault();
+        //     ev.stopPropagation();
+        //     window.scrollTo(0, initial);
+        // }
+        // function wheelContent(ev: WheelEvent) {
+        //     initial = window.pageYOffset;
+        //     const parent: HTMLElement | null =
+        //         (ev.target as HTMLElement).closest('.hidden__sroll') ||
+        //         (ev.target as HTMLElement).closest('.visible__scroll');
 
-            if (parent) {
-                trottle();
-                let coord = parent.children[0].getBoundingClientRect();
-                parent.scrollTo(Math.abs(coord.x) + ev.deltaY, 0);
-            } else {
-                window.removeEventListener('scroll', scrollingContent);
-            }
-        }
-        window.addEventListener('wheel', wheelContent);
+        //     if (parent) {
+        //         trottle();
+        //         let coord = parent.children[0].getBoundingClientRect();
+        //         parent.scrollTo(Math.abs(coord.x) + ev.deltaY, 0);
+        //     } else {
+        //         window.removeEventListener('scroll', scrollingContent);
+        //     }
+        // }
+        // window.addEventListener('wheel', wheelContent);
 
         const data: Record<string, string> = parseParams(window.location.search);
 
@@ -67,10 +67,10 @@ export default function MainWeather() {
                 if (res) setWeatherData(res);
             })
             .catch(console.log);
-        return () => {
-            window.removeEventListener('wheel', wheelContent);
-            window.removeEventListener('scroll', scrollingContent);
-        };
+        // return () => {
+        //     window.removeEventListener('wheel', wheelContent);
+        //     window.removeEventListener('scroll', scrollingContent);
+        // };
     }, []);
     useEffect(() => {
         const result: undefined | Array<{ [key: string]: string | number }> =

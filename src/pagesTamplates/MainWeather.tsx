@@ -62,8 +62,6 @@ export default function MainWeather() {
                 : { data: data.city },
         )
             .then(res => {
-                console.log(res);
-
                 if (res) setWeatherData(res);
             })
             .catch(console.log);

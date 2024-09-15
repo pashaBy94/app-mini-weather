@@ -1,30 +1,35 @@
 import { parseData, parseUTC } from '@/shared/lib';
-import { useEffect } from 'react';
-import { setSunny } from './lib/utils';
+import { useEffect, useRef } from 'react';
+import { drawSunny } from './lib/utils';
 
 export function SunTime({ sunrise, sunset, dt }: { sunrise: number; sunset: number; dt: number }) {
+    const ref = useRef(null);
     useEffect(() => {
-        setSunny({
+        drawSunny({
             sunrise,
             sunset,
             dt,
-            node: document.querySelector('.fanny_suny') as HTMLImageElement,
+            node: ref.current as HTMLCanvasElement | null,
         });
     }, []);
     return (
-        <div className="bg-white rounded-xl p-2 flex flex-col gap-2 ">
-            <h3 className=" text-[.8rem]">Закат и рассвет</h3>
-            <div className=" relative flex gap-10 items-center">
+        <div className="bg-white rounded-xl p-2 bm:p-3 cm:p-4 dm:p-2 flex flex-col gap-2 ">
+            <h3 className=" text-[.8rem]  bm:text-[.9rem]">Закат и рассвет</h3>
+            <div className=" relative flex am:gap-2 bm:gap-5 dm:gap-20 items-center ">
                 <div>
                     <p className=" font-semibold  flex gap-1 mb-1 items-center ">
-                        <span className=" text-gray-600 text-[.8rem]">Рассвет: </span>
+                        <span className=" text-gray-600 text-[.8rem] am:hidden abm:inline">
+                            Рассвет:{' '}
+                        </span>
                         <span className=" text-gray-600 text-[1.1rem]">
                             {parseData(parseUTC(sunrise), ['time'])}
                             <br />
                         </span>
                     </p>
                     <p className=" font-semibold  flex gap-1 items-center ">
-                        <span className=" text-gray-600 text-[.8rem]">Закат: </span>
+                        <span className=" text-gray-600 text-[.8rem] am:hidden abm:inline">
+                            Закат:{' '}
+                        </span>
                         <span className=" text-gray-600 text-[1.1rem]">
                             {parseData(parseUTC(sunset), ['time'])}
                             <br />
@@ -32,22 +37,12 @@ export function SunTime({ sunrise, sunset, dt }: { sunrise: number; sunset: numb
                     </p>
                 </div>
                 <div className=" flex items-end ">
-                    <span className=" text-gray-600 text-[.7rem]">
-                        {parseData(parseUTC(sunrise), ['time'])}
-                    </span>
-                    <div className=" relative h-20 w-28 overflow-hidden p-4 pt-6 ">
-                        <div className=" relative h-full w-full border-b-2 border-dotted border-indigo-500">
-                            <div className="fanny_suny absolute z-10 flex flex-col items-center">
-                                <span className=" text-gray-600 text-[.7rem]">
-                                    {parseData(parseUTC(dt), ['time'])}
-                                </span>
-                                <div className=" rounded-full w-4 h-4 bg-yellow-500 "></div>
-                            </div>
-                        </div>
-                    </div>
-                    <span className=" text-gray-600 text-[.7rem]">
-                        {parseData(parseUTC(sunset), ['time'])}
-                    </span>
+                    <canvas
+                        ref={ref}
+                        width={220}
+                        height={140}
+                        className=" w-[180px] h-[110px] abm:w-[190px] abm:h-[115px] bm:w-[220px] bm:h-[140px] cm:w-[240px] cm:h-[145px] dm:w-[280px] dm:h-[160px]"
+                    ></canvas>
                 </div>
             </div>
         </div>

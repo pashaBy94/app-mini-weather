@@ -89,7 +89,7 @@ export default function MainWeather() {
     return (
         <div className="flex flex-col gap-4 bg-indigo-100 max-w-[770px] m-0 mx-auto">
             <Header weatherData={weatherData} />
-            <main className="px-2">
+            <main className="px-2 cm:px-5">
                 <HourlyList hourlyData={hourlyData} />
                 {minutlyData && <MinutlyList minutlyData={minutlyData} />}
                 {weatherData?.daily && <DailyList dailyData={weatherData?.daily} />}

@@ -12,14 +12,15 @@ export function SpeedWind({ deg, speed }: { deg: number; speed: number }) {
         });
     }, []);
     return (
-        <div className="bg-white rounded-xl p-2 flex flex-col gap-2 w-full ">
-            <h3 className=" text-[.8rem]">Скорость ветра</h3>
-            <div className=" flex gap-2">
-                <p className=" font-semibold">
-                    <span className=" text-gray-600 text-[1.1rem]">{speed}</span> м/с
+        <div className="bg-white rounded-xl p-2 bm:p-3 cm:p-4 dm:p-2 flex flex-col gap-2 w-full ">
+            <h3 className=" text-[.8rem] bm:text-[.9rem]">Скорость ветра</h3>
+            <div className=" flex gap-2 items-center">
+                <p className=" font-semibold flex flex-col bm:flex-row">
+                    <span className=" text-gray-600 text-[1.1rem]">{speed}&nbsp;</span>{' '}
+                    <span className=" text-gray-600 text-[1.1rem]">м/с</span>
                 </p>
                 <Image
-                    className={`rotate__deg block`}
+                    className={`rotate__deg block h-10 w-10 bm:h-14 bm:w-14 dm:h-10 dm:w-10`}
                     src={iconMarker.direction}
                     alt="speed"
                     width={30}

@@ -10,7 +10,7 @@ export function MinutlyList({
 
     return (
         <section className="mb-5">
-            <h2 className="mb-2">Осадки в ближайший час</h2>
+            <h2 className="mb-2 am:text-[.9rem] bm:text-base">Осадки в ближайший час</h2>
             <div className=" relative">
                 {isMobile ? null : <div className="after-pill"></div>}
                 <div

@@ -6,9 +6,9 @@ export function Humdity({ humidity, dew_point }: { humidity: number; dew_point: 
         (ref.current as unknown as HTMLElement).style.height = (56 * humidity) / 100 + 'px';
     }, []);
     return (
-        <div className="w-full bg-white rounded-xl p-2 flex flex-col gap-2 ">
-            <h3 className=" text-[.8rem]">Влажность</h3>
-            <div className=" flex gap-2">
+        <div className="w-full bg-white rounded-xl p-2 bm:p-3 cm:p-4 dm:p-2 flex flex-col gap-2 ">
+            <h3 className=" text-[.8rem]  bm:text-[.9rem]">Влажность</h3>
+            <div className=" flex gap-2 bm:gap-6 dm:gap-2">
                 <p className=" font-semibold flex flex-col gap-1">
                     <span className=" text-gray-600 text-[1.1rem]">{humidity} %</span>
                     <span className=" text-gray-600 text-[.8rem]">

@@ -8,7 +8,7 @@ export function HourlyList({ hourlyData }: HourlyListComponent) {
 
     return (
         <section className="mb-5">
-            <h2 className="mb-2">Почасовой прогноз</h2>
+            <h2 className="mb-2 am:text-[.9rem] bm:text-base">Почасовой прогноз</h2>
             <div className=" relative">
                 {isMobile ? null : <div className="after-pill"></div>}
                 <div

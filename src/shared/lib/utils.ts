@@ -46,7 +46,7 @@ export function parseData(
     }
     const formattedTime = `${hours}:${minutes.toString().padStart(2, '0')} ${option.includes('timeOfDay') ? timeOfDay : ''}`;
 
-    return `${option.includes('day') ? dayNumber : ''} ${option.includes('month') ? month : ''} ${option.includes('year') ? year : ''}${option.includes('week') ? ', ' + dayName : ''} ${option.includes('time') ? formattedTime : ''}`;
+    return `${option.includes('day') ? dayNumber : ''} ${option.includes('month') ? month : ''} ${option.includes('year') ? year : ''}${option.includes('week') ? ' ' + dayName : ''} ${option.includes('time') ? formattedTime : ''}`.trim();
 }
 export function parseUTC(mlsec: number): number {
     return mlsec * 1000;

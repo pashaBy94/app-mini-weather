@@ -38,7 +38,5 @@ export function useGetPlatform() {
             setIsMobile(true);
         else setIsMobile(false);
     }, [platform]);
-    console.log(isMobile, platform);
-
     return [platform, isMobile];
 }

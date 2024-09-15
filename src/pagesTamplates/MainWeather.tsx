@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { getWeather } from '@/shared/api/weatherApi';
 import { WeatherData } from '@/shared/model/types';
 import { parseData, parseUTC } from '@/shared/lib';
-import Image from 'next/image';
 import { iconMarker } from '@/lib/images';
 import { DailyList, Header, HourlyList, MinutlyList } from '@/widgets';
 import { parseParams } from '@/shared/lib/utils';

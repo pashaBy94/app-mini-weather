@@ -64,6 +64,7 @@ export default function MainWeather() {
                 if (res) setWeatherData(res);
             })
             .catch(console.log);
+
         // return () => {
         //     window.removeEventListener('wheel', wheelContent);
         //     window.removeEventListener('scroll', scrollingContent);

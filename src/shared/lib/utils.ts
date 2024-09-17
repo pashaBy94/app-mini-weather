@@ -53,7 +53,7 @@ export function parseUTC(mlsec: number): number {
 }
 
 export function parseParams(search: string) {
-    const data: Record<string, string> = { city: 'Minsk' };
+    const data: Record<string, string> = {};
     if (search) {
         const params = search.split('?')[1].split('&');
         params.forEach(par => {

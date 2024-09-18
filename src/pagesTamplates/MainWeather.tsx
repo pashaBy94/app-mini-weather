@@ -16,6 +16,10 @@ export default function MainWeather() {
     const [minutlyData, setMinutlyData] = useState<Array<{ dt: number; precipitation: number }>>();
 
     useEffect(() => {
+        function unloader() {
+            document.documentElement.innerHTML = '';
+        }
+        window.addEventListener('unload', unloader);
         // let initial = window.pageYOffset;
         // function trottleScroll() {
         //     let timer: any;
@@ -65,10 +69,10 @@ export default function MainWeather() {
             })
             .catch(console.log);
 
-        // return () => {
-        //     window.removeEventListener('wheel', wheelContent);
-        //     window.removeEventListener('scroll', scrollingContent);
-        // };
+        return () => {
+            window.removeEventListener('unload', unloader);
+            //     window.removeEventListener('scroll', scrollingContent);
+        };
     }, []);
     useEffect(() => {
         const result: undefined | Array<{ [key: string]: string | number }> =

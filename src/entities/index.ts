@@ -6,3 +6,4 @@ export { Humdity } from './humidity/Humidity';
 export { Pressure } from './pressure/Pressure';
 export { Uvi } from './uvi/Uvi';
 export { MinutlyItem } from './minutlyItem/MinutlyItem';
+export { NewsItem } from './newsItem/NewsItem';

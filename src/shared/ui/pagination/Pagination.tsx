@@ -5,7 +5,7 @@ export function Pagination({
 }: {
     totalResults?: number;
     numbPage?: number;
-    nextPage?: number;
+    nextPage?: number | string | null;
 }) {
     return (
         <div className=" fixed bottom-0 left-0 right-0 bg-white">

@@ -1,18 +1,16 @@
 'use client';
-import { HourlyItem, NewsItem } from '@/entities';
-import { useGetPlatform } from '@/shared/lib/hooks';
-import { HourlyListComponent, OnlyNewsData } from '@/shared/model/types';
+import { NewsItem } from '@/entities';
+import { OnlyNewsData } from '@/shared/model/types';
 
-export function NewsList({ newsData }: { newsData: Array<OnlyNewsData> }) {
-    const [, isMobile] = useGetPlatform();
-
+export function NewsList({ newsData }: { newsData: Array<OnlyNewsData> | undefined }) {
     return (
         <section className="mb-5">
-            <h2 className="mb-2 am:text-[.9rem] bm:text-base">Только свежие новости</h2>
-            <ul className=" ">
-                {newsData.map(item => {
-                    return <NewsItem key={item.article_id} newsItemData={item} />;
-                })}
+            <h2 className="mb-2 ">Только свежие новости</h2>
+            <ul className=" grid am:grid-cols-1 cm:grid-cols-2 gap-4">
+                {newsData &&
+                    newsData.map(item => {
+                        return <NewsItem key={item.article_id} newsItemData={item} />;
+                    })}
             </ul>
         </section>
     );

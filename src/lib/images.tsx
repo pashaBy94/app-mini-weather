@@ -21,5 +21,6 @@ export const iconMarker: { [key: string]: string } = {
     direction: '/images/direction.png',
     iconNews: '/images/newsIcon.png',
     rain: '/images/rain.svg',
+    not_image: '/images/not_image.jpg',
     not_rain: '/images/not-rain.svg',
 };

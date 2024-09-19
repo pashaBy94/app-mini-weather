@@ -1,23 +1,32 @@
 import { NewsData } from '../model/types';
 
-export async function getNews({ page }: { page?: number }): Promise<NewsData | void> {
-    const CATEGORY_EXCLUDE = 'politics';
+// const CATEGORY = '&category=education,health,science,technology,world';
+const CATEGORY = '';
+
+export async function getNews({
+    page,
+}: {
+    page?: number | string | null;
+}): Promise<NewsData | void> {
     console.log('page from getNews:', page);
 
     // for test +++++++++++++++++++++++++++++++++
     // const res = await localStorage.getItem('news');
-    // // console.log(res);
 
     // if (res) {
-    //     console.log(JSON.parse(res).results);
+    //     const result = await JSON.parse(res);
+    //     result.results.forEach((el: any) => {
+    //         el.article_id = Math.random();
+    //     });
+    //     console.log(result.results);
 
-    //     return await JSON.parse(res);
+    //     return await result;
     // }
-    // // // +++++++++++++++++++++++++++++++++++++++
+    // +++++++++++++++++++++++++++++++++++++++
     // else
     try {
         const response = await fetch(
-            `https://newsdata.io/api/1/latest?apikey=${process.env.NEXT_PUBLIC_KEY_API_NEWS}&language=ru&category=!${CATEGORY_EXCLUDE}&country=by${page ? '&page=' + page : ''}`,
+            `https://newsdata.io/api/1/latest?apikey=${process.env.NEXT_PUBLIC_KEY_API_NEWS}&language=ru${CATEGORY}&country=by${page ? '&page=' + page : ''}`,
         );
         const result = await response.json();
         await localStorage.setItem('news', JSON.stringify(result));

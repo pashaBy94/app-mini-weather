@@ -8,7 +8,8 @@ export function drawSunny({ sunset, sunrise, dt, node }: { [key: string]: any })
         const howLongPercent = Math.round(howLong / onePercent);
         return howLongPercent > 100 ? 100 : howLongPercent;
     }
-    const perc = timePassedtoPercent({ sunset, sunrise, dt });
+    const perc = Math.max(0, timePassedtoPercent({ sunset, sunrise, dt }));
+    console.log(perc);
 
     if (node) {
         const ctx = node.getContext('2d');

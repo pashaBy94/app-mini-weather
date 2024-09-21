@@ -79,7 +79,11 @@ export function NewsItem({ newsItemData }: { newsItemData: OnlyNewsData }) {
                 {newsItemData.title}
             </h3>
             <p className=" leading-none text-justify">
-                {newsItemData.description.split('Читать далее...')[0]}{' '}
+                {!newsItemData.description
+                    ? ''
+                    : newsItemData.description.endsWith('Читать далее...')
+                      ? newsItemData.description.split('Читать далее...')[0]
+                      : newsItemData.description}{' '}
                 <Link href={newsItemData.link} className=" text-blue-500 whitespace-nowrap">
                     Читать далее...
                 </Link>

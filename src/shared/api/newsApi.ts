@@ -1,7 +1,7 @@
 import { NewsData } from '../model/types';
 
-// const CATEGORY = '&category=education,health,science,technology,world';
-const CATEGORY = '';
+const CATEGORY = '&category=education,health,science,technology,world';
+// const CATEGORY = '';
 
 export async function getNews({
     page,

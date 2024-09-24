@@ -9,5 +9,4 @@ export default function Home({ params }: { params: { slug: string } }) {
     if (params.slug === 'weather') {
         return <MainWeather />;
     }
-    // return <div>{params.slug}</div>;
 }

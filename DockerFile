@@ -1,0 +1,24 @@
+FROM node:18.19.0 AS dependencies
+WORKDIR /app2
+COPY package.json package-lock.json ./
+RUN npm ci
+
+FROM node:18.19.0 as builder
+WORKDIR /app2
+COPY . .
+COPY --from=dependencies /app2/node_modules ./node_modules
+RUN npm run build
+
+FROM node:18.19.0 as runner
+WORKDIR /app2
+ENV NODE_ENV production
+ENV NEXT_PUBLIC_KEY_BOT="7300847942:AAFHBv1CDWbbV2bgPinpsQG8EoHCKMaqBAM"
+ENV NEXT_PUBLIC_KEY_API_WEATHER="b16025fa064057e1516fcb03ff9033c1"
+ENV NEXT_PUBLIC_KEY_API_NEWS="pub_53642eb49b38da0194ccaf70c23e4960885d0"
+COPY --from=builder /app2/public ./public
+COPY --from=builder /app2/.next ./.next
+COPY --from=builder /app2/node_modules ./node_modules
+COPY --from=builder /app2/package.json ./package.json
+
+EXPOSE 3000
+CMD ["npm", "run", "start"]
